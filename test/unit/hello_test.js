@@ -1,14 +1,8 @@
-'use strict';
-const Code  = require('code');
-const Lab   = require('lab');
-const lab   = exports.lab = Lab.script();
+const expect = require('chai').expect;
 
-lab.experiment('test greetings', () => {
+describe('test greetings', () => {
 
-    lab.test('greets with name ', (done) => {
-
-        Code.expect(true).to.be.a.boolean().and.to.not.equal(false);
-        done();
+    it('greets with name', () => {
+        expect(true).to.equals(true);
     });
-
-});
+  });

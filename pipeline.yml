@@ -12,6 +12,13 @@ resources:
     source: &repo-source
       uri: https://github.com/pedrofolim/hello_hapi
       branch: master
+
+  - name: hello_hapi_template_ci
+    type: git
+    source: &hello_hapi_template_ci
+      uri: https://github.com/pedrofolim/hello_hapi_template_ci
+      branch: master
+
   - name: hello_hapi-docker-image
     type: docker-image
     source:
@@ -21,6 +28,7 @@ resources:
       insecure_registries: [ "nexus-registry-nexus.apps.quarks-dev.sysmap.io" ]
       repository: nexus-registry-nexus.apps.quarks-dev.sysmap.io/poc/hello_hapi
       tag: 1.0.0
+      
   - name: dependency-cache
     type: npm-cache
     source:
