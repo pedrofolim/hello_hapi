@@ -20,20 +20,4 @@ lab.experiment('Basic HTTP Tests', () => {
             done();
         });
     });
-
-    lab.test('Greets /hello/Homer%20Simpson} ', (done) => {
-
-        const options = {
-            method: 'GET',
-            url: '/hello/Homer%20Simpson'
-        };
-
-        Server.inject(options, ( response ) => {
-
-            Code.expect(response.statusCode).to.equal(200);
-            Code.expect(response.result).to.equal('Hello, Homer Simpson!');
-            done();
-        });
-    });
-
 });
