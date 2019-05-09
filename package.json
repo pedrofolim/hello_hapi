@@ -13,7 +13,7 @@
     "hapi": "^16.4.1"
   },
   "devDependencies": {
-    "code": "^4.0.0",
+    "@hapi/code": "^5.3.1",
     "lab": "^14.3.2"
   }
 }
