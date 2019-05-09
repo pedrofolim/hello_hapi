@@ -8,8 +8,8 @@ lab.experiment('test greetings', () => {
 
     lab.test('greets with name ', (done) => {
 
-        expect(true).to.be.a.boolean().and.to.not.equal(false);
-        expect('this string').to.only.include(['this', 'string']);
+        Code.expect(true).to.be.a.boolean().and.to.not.equal(false);
+        Code.expect('this string').to.only.include(['this', 'string']);
         done();
     });
 
