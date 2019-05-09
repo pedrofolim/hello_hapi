@@ -34,21 +34,12 @@ jobs:
       - get: hello_hapi
         trigger: true
       - get: dependency-cache
-  - name: Run tests
-    plan:
-      - get: hello_hapi
-        trigger: true
-        passed: [Install dependencies]
-      - get: dependency-cache
-        passed: [Install dependencies]
-      - task: run the test suite
-        file: hello_hapi/ci/tasks/run_tests.yml
   - name: Build Feature
     plan:
       - get: hello_hapi
         trigger: true
-        passed: [Run tests]
+        passed: [Install dependencies]
       - get: dependency-cache
-        passed: [Run tests]
+        passed: [Install dependencies]
       - put: hello_hapi-docker-image
         params: {build: hello_hapi}
