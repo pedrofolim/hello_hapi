@@ -12,6 +12,15 @@ resources:
     source: &repo-source
       uri: https://github.com/pedrofolim/hello_hapi
       branch: master
+  - name: hello_hapi-docker-image
+    type: docker-image
+    source:
+      email: nexus@sysmap.com.br
+      username: admin
+      password: admin123
+      insecure_registries: nexus-registry-nexus.apps.quarks-dev.sysmap.io
+      repository: nexus-registry-nexus.apps.quarks-dev.sysmap.io/poc/hello_hapi
+      tag: 1.0.0
   - name: dependency-cache
     type: npm-cache
     source:
@@ -34,3 +43,12 @@ jobs:
         passed: [Install dependencies]
       - task: run the test suite
         file: hello_hapi/ci/tasks/run_tests.yml
+  - name: Build Feature
+    plan:
+      - get: hello_hapi
+        trigger: true
+        passed: [Run tests]
+      - get: dependency-cache
+        passed: [Run tests]
+      - put: hello_hapi-docker-image
+        params: {build: hello_hapi}
